@@ -1,0 +1,7 @@
+{
+  "name": "static-site-example",
+  "private": true,
+  "dependencies": {
+    "metalsmith": "^2.3.0"
+  }
+}

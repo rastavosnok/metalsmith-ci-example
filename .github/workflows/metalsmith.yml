@@ -21,10 +21,6 @@ jobs:
 
     - run: .github/scripts/install_apache2.sh
 
-    - run: curl -vsf 'http://localhost:80/'
-
-    - run: curl -vsf 'http://localhost:80/phpinfo.php'
-
     # Do a lookup on local.dev hostname set above 
     - run: sudo apache2ctl configtest
 
@@ -33,3 +29,8 @@ jobs:
 
     # Check PHP Version
     - run: sudo php -v
+
+    - run: curl -vsf 'http://localhost:80/'
+
+    - run: curl -vsf 'http://localhost:80/phpinfo.php'
+

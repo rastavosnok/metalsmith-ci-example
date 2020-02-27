@@ -8,7 +8,7 @@ sudo apt-get install -y --force-yes apache2
 # sudo apt-get install -y --force-yes libapache2-mod-php7.3
 
 # Copy website data
-sudo cp build/phpinfo.php /var/www/phpinfo.php
+sudo cp build/phpinfo.php /var/www/html/phpinfo.php
 
 # Enable mods
 sudo a2enmod rewrite

@@ -4,7 +4,6 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -19,3 +18,16 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm install
     - run: node index.js
+
+    - run: .github/scripts/install_apache2.sh
+
+    - run: curl -vsf 'http://localhost:80/'
+
+    # Do a lookup on local.dev hostname set above 
+    - run: sudo apache2ctl configtest
+
+    # Check Apache Version
+    - run: sudo apache2 -v
+
+    # Check PHP Version
+    - run: sudo php -v

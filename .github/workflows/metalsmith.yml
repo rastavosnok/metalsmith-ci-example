@@ -23,6 +23,8 @@ jobs:
 
     - run: curl -vsf 'http://localhost:80/'
 
+    - run: curl -vsf 'http://localhost:80/phpinfo.php'
+
     # Do a lookup on local.dev hostname set above 
     - run: sudo apache2ctl configtest
 

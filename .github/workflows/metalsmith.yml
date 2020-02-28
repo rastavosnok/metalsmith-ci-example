@@ -20,6 +20,7 @@ jobs:
     - run: node index.js
 
     - run: .github/scripts/install_apache2.sh
+    - run: .github/scripts/configure_apache2.sh
 
     # Do a lookup on local.dev hostname set above 
     - run: sudo apache2ctl configtest
@@ -27,8 +28,6 @@ jobs:
     # Check Apache Version
     - run: sudo apache2 -v
 
-    # Check PHP Version
-    - run: sudo php -v
 
     - run: curl -vsf 'http://localhost:80/'
 

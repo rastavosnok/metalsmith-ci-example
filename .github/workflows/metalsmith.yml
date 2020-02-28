@@ -34,10 +34,10 @@ jobs:
     - run: curl -vsf 'http://localhost:80/phpinfo.php' -o phpinfo.html
 
     - name: Save phpinfo
-        uses: actions/upload-artifact@v1
-        with:
-          name: phpinfo
-          path: phpinfo.html
+      uses: actions/upload-artifact@v1
+      with:
+        name: phpinfo
+        path: phpinfo.html
 
-          
+
 

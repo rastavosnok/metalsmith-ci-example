@@ -6,20 +6,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [10.x]
-
     steps:
     - uses: actions/checkout@v2
-    - name: Use Node.js ${{ matrix.node-version }}
+    - name: Setup Node.js 10.x
       uses: actions/setup-node@v1
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 10.x
     - run: npm install
     - run: node index.js
 
-    - run: .github/scripts/install_apache2.sh
+    - name: Install apache2 and php
+      run: .github/scripts/install_apache2.sh
+    - name: Configure apache2
+      run: .github/scripts/configure_apache2.sh
 
     # Do a lookup on local.dev hostname set above 
     - run: sudo apache2ctl configtest
@@ -27,10 +26,19 @@ jobs:
     # Check Apache Version
     - run: sudo apache2 -v
 
-    # Check PHP Version
-    - run: sudo php -v
+    # Check phpinfo
+    - run: curl -vsf 'http://localhost:80/phpinfo.php' -o phpinfo.html
+    - name: Save phpinfo
+      uses: actions/upload-artifact@v1
+      with:
+        name: phpinfo
+        path: phpinfo.html
 
-    - run: curl -vsf 'http://localhost:80/'
-
-    - run: curl -vsf 'http://localhost:80/phpinfo.php'
+    # Check index page
+    - run: curl -vsf 'http://localhost:80/' -o index.html
+    - name: Save index
+      uses: actions/upload-artifact@v1
+      with:
+        name: index
+        path: index.html
 

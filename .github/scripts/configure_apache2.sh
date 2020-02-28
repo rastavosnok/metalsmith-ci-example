@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Copy website data
-sudo cp build/phpinfo.php /var/www/html/phpinfo.php
+sudo rm /var/www/html/*
+sudo cp build/* /var/www/html/
 
 # Enable mods
 sudo a2enmod rewrite

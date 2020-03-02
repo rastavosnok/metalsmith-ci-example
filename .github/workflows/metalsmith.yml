@@ -42,3 +42,11 @@ jobs:
         name: index
         path: index.html
 
+    # start selenium
+    - run: pip install selenium requests
+
+    # test selenium
+    - run: python .github/scripts/check_site.py
+
+    
+    

@@ -47,6 +47,3 @@ jobs:
 
     # test selenium
     - run: python .github/scripts/check_site.py
-
-    
-    
